@@ -5,19 +5,29 @@ const App = () => {
   const [answer, setAnswer] = useState(0);
 
   const display = (symbol) => {
-    setExpression(prev => prev + symbol)
+    setExpression(prev => prev + symbol);
+    if(expression[expression.length-1] === "=") {
+      if(/[0-9]/.test(symbol)) {
+        setExpression(symbol)
+      }else {
+        setExpression(answer + symbol);
+      }
+    }
   };
 
   const calculate = () => {
-    setAnswer(eval(expression))
+    setAnswer(eval(expression));
+    setExpression((prev) => prev + "=");
   };
 
   const allClear = () => {
-
+    setExpression("");
+    setAnswer(0);
   };
  
   const clear = () => {
-
+    setExpression((prev) => prev.split('').slice(0, prev.length - 1).join(''));
+    setAnswer('0');
   };
 
 
@@ -43,7 +53,7 @@ const App = () => {
       <div onClick={() => display("1")} className="padButton dark-grey one">1</div>
       <div onClick={() => display("2")} className="padButton dark-grey two">2</div>
       <div onClick={() => display("3")} className="padButton dark-grey three">3</div>
-      <div onClick={() => calculate("=")} className="padButton equal blue">=</div>
+      <div id="equals" onClick={() => calculate("=")} className="padButton equal blue">=</div>
       <div onClick={() => display("0")} className="padButton dark-grey zero">0</div>
       <div onClick={() => display(".")} className="padButton dark-grey dot">.</div>
      </div>

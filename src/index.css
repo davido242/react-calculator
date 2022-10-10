@@ -30,6 +30,10 @@
   /* border-radius: 10px; */
 }
 
+.padButton:hover {
+  border: 1px solid white;
+  color: #ccc;
+}
 .dis {
   grid-area: dis;
   text-align: right;
@@ -57,13 +61,15 @@
   background-color: tomato;
 }
 
-/* .dis input {
-  width: 98%;
-  height: 100%;
+.dis input {
+  width: 90%;
+  text-align: right;
+  padding: 5px 20px;
   background-color: red;
   color: #fff;
-} */
+}
 
 .total {
-  color: #fff;
+  color: yellow;
+  padding: 5px 20px;
 }
